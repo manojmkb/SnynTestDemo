@@ -7,11 +7,17 @@ orbs:
 workflows:
   maven_test:
     jobs:
-      - maven/test # checkout, build, test, and upload test results
+      - maven/test: # checkout, build, test, and upload test results
           command: 'spring-boot:build-image'
-      - snyk/scan:
-          docker-image-name: 'purpledobie/java-svc:cnb'
-          fail-on-issues: fail-on-issues
-          monitor-on-build: true
-          severity-threshold: high
-          token-variable: API_TOKEN
+
+#workflows:
+#  maven_test:
+#    jobs:
+#      - maven/test # checkout, build, test, and upload test results
+#          command: 'spring-boot:build-image'
+#      - snyk/scan
+#          docker-image-name: 'purpledobie/java-svc:cnb'
+#          fail-on-issues: fail-on-issues
+#          monitor-on-build: true
+#          severity-threshold: high
+#          token-variable: API_TOKEN
